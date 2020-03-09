@@ -64,7 +64,7 @@ public class callCenter {
 			System.out.println("What seems to be the issue?");
 			System.out.println("\t 1. Product Defect");
 			System.out.println("\t 2. Missing Parts");
-			System.out.println("\t 2. Not what you expected");
+			System.out.println("\t 31. Not what you expected");
 			//We can add more
 			System.out.println("\t 0. Exit");//If they enter zero the program will exit
 			System.out.println("Please enter a number from the menu above: ");
@@ -104,7 +104,7 @@ public class callCenter {
 						case 1:
 							validateOrder();
 							System.out.println("Please go to your local Post office and give them this shipping code and your order will be returned for free");
-							System.out.println("Your shipping number is" + generateShippingCode());
+							System.out.println("Your shipping number is " + generateShippingCode());
 							validEntry = true;
 							break;
 						case 2:
@@ -137,7 +137,7 @@ public class callCenter {
 		return (int)(Math.random()*100000000);	
 	}
 	static void validateOrder() {
-		System.out.println("To confirm your order, please enter your product ID and creditcard information");
+		System.out.println("To confirm your order, please enter your product ID and credit card information");
 		System.out.println("Credit Card Number: ");
 		creditCardNumber = in.nextInt();
 		System.out.println("Product ID: ");
