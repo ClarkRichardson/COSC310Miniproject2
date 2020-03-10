@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Complaints {
+public class callCenter {
 	static boolean callActive = true;
 	static int category = 0;
 	static String[] productList = {"chair", "table", "couch", "love seat", 
