@@ -205,10 +205,12 @@ public class callCenter {
 =======
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class callCenter {
 	static String[] products = {"chair", "table", "couch", "love seat", "night stand", "lamp", "wardrobe", "stool", "kitchen appliance"};
 	static String[][] userReviews = new String[100][2];
+  static ArrayList<String> userComplaints = new ArrayList<String>();
 	static String str;
 	static boolean callActive = true;
 	static int category = 0;
@@ -231,7 +233,7 @@ public class callCenter {
 						productSatisfaction();
 						break;
 					case 2:
-						complaints();
+						complaintCheck();
 						break;
 					case 3:
 						reviews();
@@ -338,9 +340,59 @@ public class callCenter {
 		
 		
 	}
-	
+  
+	static void complaintCheck() {
+		in.nextLine();
+		System.out.println("I'm very sorry to hear you've had a bad experience.");
+		System.out.println("Is there something we could do to fix the situation, yes or no?");
+		String fixable = in.nextLine();
+			if (fixable.contains("yes")) {
+				productSatisfaction();
+			} if (fixable.contains("no")) {
+				complaints();
+			} else {
+				System.out.println("Invalid entry, please respond yes or no");
+			}
+  }
+  
 	static void complaints() {
-		//More stuff here
+		System.out.println("We will need some basic information from you to process your complaint");
+		System.out.println("What is your name?");
+		String name = in.nextLine();
+		
+		System.out.println("Ok "+ name +" what product would you like to leave a complaint for?");
+		String product = in.nextLine();
+		boolean found = false;
+		boolean wrong = false;
+		
+		for(int i = 0; found == false && i < productList.length; i++) {
+			if(product.contains(productList[i])) {
+				found = true;
+				product = productList[i];
+				System.out.printf("I am very sorry to hear you have a complaint about one of our %ss.", product);
+				System.out.println("\nPlease leave your complaint below:");
+				String complaint = in.nextLine();
+				userComplaints.add(product + ": " + complaint);
+			}
+			else if(i == productList.length-1 && !found) {
+				System.out.println("I'm sorry, that doesn't sound like one of our products.");
+				wrong = true;
+			}
+			
+		}
+		if(wrong == true) {chooseCategory();}
+		
+		System.out.println("Thank you very much for your feedback.");
+		System.out.printf("We will work to ensure that the issues you've had with %s do not happen again.\n", product);
+		
+		System.out.println("Is there anything else I can do for you?");
+		String reply = in.nextLine();
+		if(reply.contains("no")) {
+			System.out.println("Have a lovely day, and thank you for shopping with us!");
+			System.exit(0);
+		} else if(reply.contains("yes")) {
+			chooseCategory();
+		}
 	}
 	
 	static void reviews() {
@@ -463,5 +515,7 @@ public class callCenter {
 		System.out.println("Product ID: ");
 		pID = in.nextInt();
 	}
-	
+  
+  
+
 
