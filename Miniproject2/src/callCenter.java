@@ -12,7 +12,7 @@ public class callCenter {
 	
 	public static void main(String[]args) {
 		
-		System.out.println("Welcome to ****** Call Center!");//not sure of the name
+		System.out.println("Welcome to ****** Call Center!");
 		
 		while(callActive) {
 			category = chooseCategory();
@@ -64,7 +64,7 @@ public class callCenter {
 			System.out.println("What seems to be the issue?");
 			System.out.println("\t 1. Product Defect");
 			System.out.println("\t 2. Missing Parts");
-			System.out.println("\t 31. Not what you expected");
+			System.out.println("\t 3. Not what you expected");
 			//We can add more
 			System.out.println("\t 0. Exit");//If they enter zero the program will exit
 			System.out.println("Please enter a number from the menu above: ");
@@ -84,6 +84,7 @@ public class callCenter {
 					validEntry = true;
 					break;
 				case 0:
+					validEntry = true;
 					break;
 				default:
 					System.out.println("Please enter a valid command");
@@ -98,6 +99,7 @@ public class callCenter {
 					System.out.println("We can either:");
 					System.out.println("\t 1. Send back your order and recive a new item");
 					System.out.println("\t 2. Send you a refund");
+					System.out.println("\t 0. Return to main menu");
 					solution = in.nextInt();
 					
 					switch(solution) {
@@ -112,11 +114,17 @@ public class callCenter {
 							System.out.println("A refund will be sent to you credit card within the next 5 business days");
 							validEntry = true;
 							break;
+						case 0:
+							validEntry = true;
+							break;
 						default:
 							System.out.println("Please enter a valid number:");
 							break;
 					}
 				}
+			}
+			if(solution == 0) {
+				break;
 			}
 			callActive = false;
 		}
