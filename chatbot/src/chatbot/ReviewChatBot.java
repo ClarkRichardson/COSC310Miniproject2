@@ -7,58 +7,123 @@ public class ReviewChatBot {
 	static String[][] userReviews = new String[100][2];
 	static Scanner in = new Scanner(System.in);
 	static String str;
+	static boolean callActive = true;
+	static int category = 0;
 	
-	public static void main(String[] args) {
-		populateReviews();
-		while (true) {
-			System.out.println("Hi! My name is Chatbot. What can I help you with today?");
-			str = in.nextLine();
-			//Review section
-			if(str.toLowerCase().contains("review")) {
-				loop: while(true) {
-					System.out.println("You have reached the Reviews section. Please select one from the following menu: ");
-					System.out.println("1. Leave a review");
-					System.out.println("2. See the reviews of a product");
-					System.out.println("3. Edit one of your existing reviews");
-					System.out.println("4. Go back to the previous menu.");
-					String categoryString = in.nextLine();
-					char category = categoryString.toCharArray()[0];
-					
-					switch(category) {
-					case '1':
-						leaveReview();
-						break;
-					case '2':
-						seeReviews();
-						break;
-					case '3':
-						editReview();
-						break;
-					case '4':
-						back();
-						break loop;
-					default:
-						System.out.println("You have made an invalid selection. Please try again.");
-					}
+	
+	public static void main(String[]args) {
+		
+		System.out.println("Welcome to ****** Call Center!");//not sure of the name
+		populateReviews(); //Gives us a few reviews to start with
+		while(callActive) {
+			category = chooseCategory();
+			if(category==0) {
+				callActive = false;//if zero exit
+			}else {
+				switch(category) {
+				case 1:
+					productSatisfaction();
+					break;
+				case 2:
+					complaints();
+					break;
+				case 3:
+					reviews();
+					break;
+				default:
+					System.out.println("Invalid entry. Please Select another category");
+					chooseCategory();
 				}
 			}
-			
-			else if(str.equalsIgnoreCase("hello"))
-				System.out.println("Hi! What can I help you with?");
-			
-			//Exit condition
-			else if(str.equalsIgnoreCase("q"))
-				break;
-			
-			//No understanding
-			else
-				System.out.println("Sorry, I can't understand your request. Please try again.");
 		}
-		in.close();
-		System.out.println("Thank you, and have a wonderful day!");
+		
+		System.out.println("I hope we were able to help.");
+		System.out.println("Have a nice day!");
+			
+	}
+
+	static int chooseCategory(){
+		System.out.println("What can I help you with?");
+		System.out.println("1. Product Satisfaction");
+		System.out.println("2. Complaints");
+		System.out.println("3. Reviews");
+		//We can add more
+		System.out.println("0. Exit");//If they enter zero the program will exit
+		System.out.println("Please enter a number from the menu above: ");
+		
+		return(in.nextInt());
+	}
+
+	static void productSatisfaction() {
+
+		
+		int issue = in.nextInt();
+		int partNumber = 0;
+		boolean validEntry = false;
+		
+		while(validEntry) {
+			System.out.println("\nProduct Satisfaction");
+			System.out.println("What seems to be the issue?");
+			System.out.println("1. Product Defect");
+			System.out.println("2. Missing Parts");
+			System.out.println("2. Not what you expected");
+			//We can add more
+			System.out.println("0. Exit");//If they enter zero the program will exit
+			System.out.println("Please enter a number from the menu above: ");
+			
+			switch (issue) {
+				case 1:
+					System.out.println("We are sorry to hear that you had a defect");
+					break;
+				case 2:
+					System.out.println("We are sorry to hear that you are missing a part");
+					break;
+				case 3:
+					System.out.println("We are sorry to hear that you recieved a part that is not what you expexted");
+					break;
+				default:
+					System.out.println("Please enter a valid command");
+					break;
+			}
+		}
+		
+		
+	}
+	
+	static void complaints() {
+		//More stuff here
+	}
+	
+	static void reviews() {
+		loop: while(true) {
+			System.out.println("You have reached the Reviews section. Please select one from the following menu: ");
+			System.out.println("1. Leave a review");
+			System.out.println("2. See the reviews of a product");
+			System.out.println("3. Edit one of your existing reviews");
+			System.out.println("4. Go back to the previous menu.");
+			int category = in.nextInt();
+			
+			switch(category) {
+			case 1:
+				leaveReview();
+				break;
+			case 2:
+				seeReviews();
+				break;
+			case 3:
+				editReview();
+				break;
+			case 4:
+				back();
+				break loop;
+			default:
+				System.out.println("You have made an invalid selection. Please try again.");
+			}
+		}
 	}
 	
 	public static void leaveReview() {
+		in.nextLine(); //Clear input
 		System.out.println("It seems that you want to leave a review. Can you tell me which product you would like to review?");
 		String str = in.nextLine();
 		boolean found = false;
@@ -82,6 +147,7 @@ public class ReviewChatBot {
 	}
 	
 	public static void seeReviews() {
+		in.nextLine(); //Clear input
 		System.out.println("It seems that you are searching for product reviews. Can you tell me which product you are looking for?");
 		String str = in.nextLine();
 		boolean found = false;
@@ -109,8 +175,8 @@ public class ReviewChatBot {
 			System.out.printf("%d. %s: %s\n",i, userReviews[i-1][0], userReviews[i-1][1]);
 		}
 		System.out.printf("%d. Go back to the previous menu.\n",i);
-		String categoryString = in.nextLine();
-		int productNum = (int) categoryString.toCharArray()[0]-48;
+		int productNum = in.nextInt();
+		in.nextLine(); //Clear input
 		
 		if(productNum < i && productNum > 0) {
 			System.out.println("Please leave your *NEW* review now:");
@@ -136,5 +202,10 @@ public class ReviewChatBot {
 		userReviews[1][1] = "Table works exactly as expected";
 		userReviews[2][0] = products[5];
 		userReviews[2][1] = "I love lamp.";
+	}
+	
+	int generateShippingCode() {
+		return 0;
+		
 	}
 }
