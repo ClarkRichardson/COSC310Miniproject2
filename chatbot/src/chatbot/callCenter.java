@@ -1,8 +1,7 @@
-package chatbot;
 
 import java.util.Scanner;
 
-public class ReviewChatBot {
+public class callCenter {
 	static String[] products = {"chair", "table", "couch", "love seat", "night stand", "lamp", "wardrobe", "stool", "kitchen appliance"};
 	static String[][] userReviews = new String[100][2];
 	static Scanner in = new Scanner(System.in);
