@@ -13,7 +13,7 @@ public class callCenter {
 	static String[] productList = {"chair", "table", "couch", "love seat", 
 			"night stand", "lamp", "wardrobe", "stool", "kitchen appliance"};
 	static ArrayList<String> userComplaints = new ArrayList<String>();
-	
+	 
 	
 	public static void main(String[]args) {
 System.out.println("Welcome to ****** Call Center!");//not sure of the name
