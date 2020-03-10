@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -35,7 +36,9 @@ public class callCenter {
 					case 4:
 						orderstatus();
 						break;
-					
+           case 5:
+						help();
+						break;
 					default:
 						System.out.println("Invalid entry. Please Select another category");
 						chooseCategory();
@@ -365,6 +368,78 @@ public class callCenter {
 		pID = in.nextInt();
 	}
   
-  
+  static void help() {
+		System.out.println("enter 0 at any time to exit.");
+		String[] products = {"coffee table", "dresser", "night stand", "dining table", "chair", "two seat sofa", "three seat sofa", "bed frame"};
+		System.out.println("What product do you need help with?");
+		for(int i = 0; i < products.length; i++) {
+			System.out.print(products[i] + ", ");
+		}
+		int product = -1;
+		boolean badinput = true;
+		in.nextLine();
+		while(badinput) {
+		String userInput = in.nextLine();
+		userInput = userInput.toLowerCase();
+		for(int i = 0; i < products.length; i++) {
+			if(products[i].contentEquals(userInput)) {
+				product = i;
+				badinput = false;
+			}
+		}
+		if(userInput == "0") {
+			System.exit(0);
+		}
+		else if(product == -1) {
+			System.out.println("sorry there may be a typo in your entry, please try again");
+		}
+		}
+		int userint = -1;
+		while(userint < 0) {
+		System.out.println("What do you need help with?");
+		System.out.println("1. Assembly");
+		System.out.println("2. Something Broke");
+		System.out.println("3. I want to return it");
+		System.out.println("9. return to main");
+		System.out.println("0. I cant exit this program");
+		userint = in.nextInt();
+
+		switch(userint) {
+		case 0:
+			System.exit(0);
+			break;
+		case 1:
+			System.out.println("Here are the assembly instructions");
+			assembly(product);
+			break;
+		case 2:
+			System.out.println("Bring the purchase along with receipt to your nearest ****** store and we will attempt to fix or replace the piece");
+			break;
+		case 3:
+			System.out.println("Bring the purchase along with receipt to your nearest ****** store and if the furniture is in good condition we will refund you");
+			break;
+		case 9:
+			break;
+		default:
+			System.out.println("Please use valid input");
+			userint = -1;
+			break;
+		}
+
+	}
+	}
+
+	static void assembly(int product) {
+		String[] instructions = {"Take each of the legs and screw them into the holes in the bottom",
+				"Screw the sides of the dresser to the back part, then do the top, then screw the rails inside and insert the drawers",
+				"Screw the legs into the bottom of the object, then insert the drawer",
+				"screw each of the legs into the bottom of the top table part",
+				"take each leg and screw them into the flat sitting part, then screw the back into the holes on the top side",
+				"take each of the two cushions and place one on the left half of the sofa and one on the right half",
+				"For each of the three cushions that come with your sofa place one on the right side, one on the left side, and one in between the other two",
+				"Attach to the bottom each of the four side parts, then attach the top part, then screw the four legs into the bottom part"};
+		System.out.println(instructions[product]);
+	}
+
 
 
