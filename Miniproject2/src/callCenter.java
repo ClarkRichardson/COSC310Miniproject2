@@ -105,7 +105,7 @@ public class callCenter {
 					switch(solution) {
 						case 1:
 							validateOrder();
-							System.out.println("Please go to your local Post office and give them this shipping code and your order will be returned for free");
+							System.out.println("Please go to your local post office and give them this shipping code and your order will be returned for free");
 							System.out.println("Your shipping number is " + generateShippingCode());
 							validEntry = true;
 							break;
