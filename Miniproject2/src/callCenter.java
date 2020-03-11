@@ -3,10 +3,14 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class callCenter {
+<<<<<<< HEAD
 	static String[] products = {"chair", "table", "couch", "love seat", "night stand", "lamp", "wardrobe", "stool", "kitchen appliance"};
 	static String[][] userReviews = new String[100][2];
   static ArrayList<String> userComplaints = new ArrayList<String>();
 	static String str;
+=======
+	
+>>>>>>> parent of 7591aec... Added Products and Reviews arrays
 	static boolean callActive = true;
 	static int category = 0;
 	static int creditCardNumber = 0;
@@ -367,6 +371,7 @@ public class callCenter {
 		System.out.println("Product ID: ");
 		pID = in.nextInt();
 	}
+<<<<<<< HEAD
   
   static void help() {
 		System.out.println("enter 0 at any time to exit.");
@@ -443,3 +448,7 @@ public class callCenter {
 
 
 
+=======
+	
+}
+>>>>>>> parent of 7591aec... Added Products and Reviews arrays
