@@ -4,10 +4,14 @@ import java.util.ArrayList;
 
 public class callCenter {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	static String[] products = {"chair", "table", "couch", "love seat", "night stand", "lamp", "wardrobe", "stool", "kitchen appliance"};
 	static String[][] userReviews = new String[100][2];
   static ArrayList<String> userComplaints = new ArrayList<String>();
 	static String str;
+=======
+	
+>>>>>>> parent of 7591aec... Added Products and Reviews arrays
 =======
 	
 >>>>>>> parent of 7591aec... Added Products and Reviews arrays
@@ -450,5 +454,9 @@ public class callCenter {
 
 =======
 	
+<<<<<<< HEAD
+}
+>>>>>>> parent of 7591aec... Added Products and Reviews arrays
+=======
 }
 >>>>>>> parent of 7591aec... Added Products and Reviews arrays
